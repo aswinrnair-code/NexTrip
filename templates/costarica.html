@@ -1,0 +1,72 @@
+{% load static %}
+{% include 'header.html' %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images\costa1.jpg' %}" class="d-block w-100" alt="..." height="700px" width="1500px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images\costa2.jpg' %}" class="d-block w-100" alt="..." height="700px" width="1500px">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images\costa3.jpg' %}" class="d-block w-100" alt="..." height="700px" width="1500px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="package-content">
+
+<h2 class="package-title">Amazon Rainforest Explorer</h2>
+
+<p class="location">📍 Location: Amazon, Brazil</p>
+
+<p class="price">Price: $799 / Person</p>
+
+<p>
+Experience the beauty of the Amazon rainforest with guided jungle walks, wildlife watching, 
+river boat trips and traditional village visits. Perfect for nature lovers and adventure seekers.
+</p>
+
+<h3 class="section-title">Package Includes</h3>
+
+<ul>
+<li>3 Nights Jungle Resort Stay</li>
+<li>Guided Forest Trek</li>
+<li>River Boat Safari</li>
+<li>All Meals Included</li>
+<li>Local Guide</li>
+</ul>
+
+<h3 class="section-title">Day Itinerary</h3>
+
+<ul>
+<li><b>Day 1:</b> Arrival and jungle orientation</li>
+<li><b>Day 2:</b> Deep forest trek and wildlife exploration</li>
+<li><b>Day 3:</b> River safari and tribal village visit</li>
+<li><b>Day 4:</b> Breakfast and departure</li>
+</ul>
+
+<a href="booking"><button class="book-btn">Book Now</button></a>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
+  
+{% include 'footer.html' %}

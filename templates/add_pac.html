@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Add Trip Package</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Card */
+.card {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+textarea {
+    height: 100px;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.row .form-group {
+    flex: 1;
+}
+
+/* Upload */
+.upload {
+    border: 2px dashed #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.upload input {
+    display: none;
+}
+
+.preview img {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #fff;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>NexTrip</h2>
+    <ul>
+        <li>Dashboard</li>
+        <li>Add Package</li>
+        <li>Manage Packages</li>
+        <li>Bookings</li>
+        <li>Logout</li>
+    </ul>
+</div>
+
+<!-- Main -->
+<div class="main">
+    <div class="card">
+        <h2>Add Trip Package</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Django -->
+            <!-- {% csrf_token %} -->
+
+            <div class="form-group">
+                <label>Package Name</label>
+                <input type="text" name="name" placeholder="Enter package name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" placeholder="Write details..." required></textarea>
+            </div>
+            
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Price (₹)</label>
+                    <input type="number" name="price" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Duration</label>
+                    <input type="text" name="duration" placeholder="3 Days / 2 Nights">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" placeholder="Munnar, Goa, etc">
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select name="category">
+                        <option>Hill Station</option>
+                        <option>Beach</option>
+                        <option>Forest</option>
+                        <option>Adventure</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Image</label>
+                <div class="upload" onclick="document.getElementById('file').click();">
+                    Click or Drag Image
+                    <input type="file" id="file" name="image" accept="image/*" onchange="previewImage(event)">
+                </div>
+                <div class="preview" id="preview"></div>
+            </div>
+
+            <button type="submit" class="btn">Add Package</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function previewImage(event) {
+    let preview = document.getElementById('preview');
+    preview.innerHTML = "";
+    let file = event.target.files[0];
+
+    if(file) {
+        let img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+    }
+}
+</script>
+
+</body>
+</html>

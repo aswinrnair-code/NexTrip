@@ -1,0 +1,133 @@
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+        }
+
+        .register-card {
+            background: #ffffff;
+            padding: 30px 35px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .register-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #5a6fdc;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+<body style="background-image: url(static/images/pexels-element5-1051075.jpg);width: 500px;">
+
+    <div class="register-card" style="background-image: url(static/images/pexels-element5-1051075.jpg);">
+        <h2>Create Account</h2>
+        <form action="register" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="name" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div class="footer-text">
+            Already have an account? Login here
+        </div>
+    </div>
+
+</body>
+</html>
+

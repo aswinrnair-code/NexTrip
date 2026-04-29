@@ -1,0 +1,70 @@
+{% load static %}
+		{% include 'header.html' %}
+		<!-- Start Appointment -->
+
+		<div >
+			<section class="appointment" >
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>User Update</h2>
+						
+							<p>Fill the details correctly</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-12">
+						
+						<form class="form" action="user_updates/{{result.id}}" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								
+
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="name" type="text" placeholder="Name" value="{{result.name}}">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="email" type="email" placeholder="Email" value="{{result.email}}">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="phone" type="text" placeholder="Phone" value="{{result.phone}}">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="password" type="password" placeholder="Password" value="{{result.password}}">
+									</div>
+								</div>
+								
+							<div class="row">
+								<div class="col-lg-5 col-md-4 col-12">
+									<div class="form-group">
+										<div class="button">
+											<button type="submit" class="btn">Update</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-7 col-md-8 col-12">
+									<p>( We will be confirm by an Text Message )</p>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-6 col-md-12 ">
+						<div class="appointment-image">
+							<!-- <img style="width: 1200px;" src="{% static 'images\pexels-olly-2672979.jpg' %}" alt="#"> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		</div>
+		<!-- End Appointment -->
+		{% include 'footer.html' %}

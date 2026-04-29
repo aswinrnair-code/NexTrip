@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish Travel Booking</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glass Effect Container */
+.container {
+    width: 420px;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.2);
+    color: black;
+    font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #eee;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Two Column Layout */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.row .form-group {
+    flex: 1;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #00c6ff;
+     color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0072ff;
+    transform: scale(1.05);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🌍 Book Your Dream Trip</h2>
+
+    <form action="tempbooking" method="POST">
+      {% csrf_token %}
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="phone" placeholder="Phone" required>
+            </div>
+        </div>
+
+        <!-- ✅ Updated Package Dropdown -->
+        <div class="form-group">
+            <label>Package Name</label>
+            <select name="package" required>
+                <option value="">-- Select Package --</option>
+                {% for pkg in packages %}
+                    <option value="{{ pkg.id }}">
+                        {{ pkg.name }} - ₹{{ pkg.price }} ({{ pkg.duration }})
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Travel Date</label>
+                <input type="date" name="travel_date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Travelers</label>
+                <input type="number" name="travelers" min="1" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Pickup Location</label>
+            <input type="text" name="pickup" placeholder="Enter location">
+        </div>
+
+        <div class="form-group">
+            <label>Special Requests</label>
+            <textarea name="spec_req" rows="3" placeholder="Your message..."></textarea>
+        </div>
+
+        <button type="submit">✈ Book Now</button>
+
+    </form>
+</div>
+
+</body>
+</html>

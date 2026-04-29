@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'header.html' %}
+
+<div class="container">
+    <section class="vh-100" style="background-color: #f4f5f7;">
+  
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">{{result.email}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p class="text-muted">{{result.phone}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Name</h6>
+                    <p class="text-muted">{{result.name}}</p>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+{% include 'footer.html' %}
